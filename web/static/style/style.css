@@ -1,0 +1,78 @@
+body {
+    background-image: url(images/fondoWeb.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+.custom-navbar {
+    background-color: #5CC8A1 !important;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    color: #34495E !important;
+}
+
+.custom-navbar .navbar-nav .nav-link.active,
+.custom-navbar .navbar-nav .nav-link:focus,
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #34495E !important;
+    font-weight: bold;
+}
+
+.LoginUsuario {
+    margin: 40px auto;
+    color: #34495E;
+    background-color: rgba(92, 200, 161, 0.7);
+    /* Verde agua con 70% opacidad */
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 400px;
+    width: 90%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.input-gris-claro {
+    background-color: #fafafa !important;
+    color: #34495E;
+    border: 1px solid #ccc;
+}
+
+.card-title {
+    font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #34495E;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.button-56 {
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10px;
+    background-color: #fee6e3;
+    border: 2px solid #34495E;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
