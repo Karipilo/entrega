@@ -1,8 +1,6 @@
 body {
-    background-image: url('../images/fondoWeb.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url('../images/fondoWeb.png') center/cover no-repeat;
     min-height: 100vh;
 }
 
@@ -57,9 +55,7 @@ body {
     margin-right: 30%;
     margin-top: 10px;
     background-color: #fee6e3;
-    border: 2px solid #34495E;
     border-radius: 8px;
-    box-sizing: border-box;
     cursor: pointer;
     display: flex;
     font-family: Inter, sans-serif;
@@ -75,4 +71,31 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+.card-vision-mision {
+    background-color: #ffffffcc;
+    /* fondo blanco con algo de transparencia */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+
+.card-vision-mision h4 {
+    text-align: left;
+    color: #34495E;
+    min-width: 100px;
+    /* ancho fijo para alinear Visión/Misión */
+    margin: 0 15px 0 0;
+}
+
+.card-vision-mision p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0;
 }
