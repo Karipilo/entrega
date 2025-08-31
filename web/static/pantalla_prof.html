@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Profesional - Cuidado Seguro</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar">
+                <h3>Cuidado Seguro</h3>
+                <nav class="nav flex-column mt-4">
+                    <a class="nav-link active" href="#agenda">Agenda</a>
+                    <a class="nav-link" href="#pacientes">Pacientes</a>
+                    <a class="nav-link" href="#actividad">Actividad</a>
+                    <a class="nav-link" href="#notificaciones">Notificaciones</a>
+                </nav>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-md-10 p-4">
+                <h1 class="mb-4">Panel del Profesional</h1>
+
+                <!-- KPIs -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card card-kpi shadow-sm">
+                            <p>Pacientes activos</p>
+                            <h2>42</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-kpi shadow-sm">
+                            <p>Controles hoy</p>
+                            <h2>8</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-kpi shadow-sm">
+                            <p>Tareas pendientes</p>
+                            <h2>5</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-kpi shadow-sm">
+                            <p>Alertas</p>
+                            <h2>2</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agenda -->
+                <section id="agenda" class="mb-5">
+                    <h3>Agenda de Hoy</h3>
+                    <div class="card p-3">
+                        <div class="agenda-row"><span>09:00 - Juan Pérez</span><span>Control crónico</span></div>
+                        <div class="agenda-row"><span>09:45 - María López</span><span>Curación</span></div>
+                        <div class="agenda-row"><span>10:30 - Carlos Díaz</span><span>Vacunación</span></div>
+                        <div class="agenda-row"><span>11:15 - Ana Rivas</span><span>Evaluación</span></div>
+                        <div class="agenda-row"><span>12:00 - Rosa Gutiérrez</span><span>Control</span></div>
+                    </div>
+                </section>
+
+                <!-- Pacientes -->
+                <section id="pacientes" class="mb-5">
+                    <h3>Pacientes</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card p-3 mb-3 shadow-sm">
+                                <h5>Juan Pérez</h5>
+                                <p>74 años • DM2, HTA</p>
+                                <span class="badge bg-warning text-dark">Riesgo Medio</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card p-3 mb-3 shadow-sm">
+                                <h5>María López</h5>
+                                <p>81 años • ACV</p>
+                                <span class="badge bg-danger">Riesgo Alto</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card p-3 mb-3 shadow-sm">
+                                <h5>Carlos Díaz</h5>
+                                <p>69 años • EPOC</p>
+                                <span class="badge bg-success">Riesgo Bajo</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Actividad -->
+                <section id="actividad" class="mb-5">
+                    <h3>Actividad Reciente</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">08:15 • Evolución agregada para Juan Pérez</li>
+                        <li class="list-group-item">09:05 • Medicación validada para María López</li>
+                        <li class="list-group-item">10:22 • Curación registrada para Carlos Díaz</li>
+                    </ul>
+                </section>
+
+                <!-- Notificaciones -->
+                <section id="notificaciones" class="mb-5">
+                    <h3>Notificaciones</h3>
+                    <div class="alert alert-danger">Alergia a penicilina: Paciente María López</div>
+                    <div class="alert alert-info">Recordatorio: Revisar signos de Ana R. a las 11:00</div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

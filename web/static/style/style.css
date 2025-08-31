@@ -125,3 +125,52 @@ body {
 .carousel-control-next-icon {
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, .35));
 }
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.card-kpi {
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.card-kpi h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.sidebar {
+    background: #34495E;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    color: #fee6e3;
+    margin-bottom: 1rem;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.nav-link.active {
+    background: #fee6e3;
+    color: #34495E;
+    border-radius: 8px;
+}
+
+.agenda-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.agenda-row span {
+    font-size: 0.9rem;
+}
