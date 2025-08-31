@@ -63,9 +63,30 @@
         <label for="inputPassword" class="form-label">Repite Contraseña</label>
         <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock"
             placeholder="Repite contraseña">
+        <div class="mb-3">
+            <label for="tipoUsuario" class="form-label">Tipo de usuario</label>
+            <select id="tipoUsuario" class="form-select" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="PROFESIONAL">Profesional de Salud</option>
+                <option value="TUTOR">Tutor / Familiar</option>
+                <!-- No ofrecer ADMIN en el formulario -->
+            </select>
+        </div>
 
+        <!-- Campos opcionales por rol -->
+        <div id="camposProfesional" class="mb-3 d-none">
+            <label for="profesion" class="form-label">Profesión</label>
+            <input type="text" id="profesion" class="form-control" placeholder="Médico, Enfermera, TENS, etc.">
+            <label for="numRegistro" class="form-label mt-2">N° registro profesional (opcional)</label>
+            <input type="text" id="numRegistro" class="form-control">
+        </div>
 
-        <button class="button-56" role="button">REGISTRO</button>
+        <div id="camposTutor" class="mb-3 d-none">
+            <label for="parentesco" class="form-label">Parentesco</label>
+            <input type="text" id="parentesco" class="form-control" placeholder="Madre, Padre, Tutor legal, etc.">
+        </div>
+
+        <button class="button-56" role="button">Crear cuenta</button>
         <div class="text-center">
             <a href="ini_sesion.html" class="small d-block text-decoration-none">Ya tengo una cuenta</a>
         </div>

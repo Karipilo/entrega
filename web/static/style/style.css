@@ -71,7 +71,16 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+
+    /* 🔹 Ajustes para mantener el texto en una sola línea */
+    white-space: nowrap;
+    /* evita que el texto se corte en varias líneas */
+    overflow: hidden;
+    /* oculta el exceso de texto si es muy largo */
+    text-overflow: ellipsis;
+    /* opcional: agrega "..." si el texto es demasiado largo */
 }
+
 
 .card-vision-mision {
     background-color: #ffffffcc;
