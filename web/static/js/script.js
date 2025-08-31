@@ -84,4 +84,6 @@ function registroUsuario() {
         alert("Registro exitoso. Ahora puedes iniciar sesión.");
         window.location.href = "ini_sesion.html";
     }
+
+
 }

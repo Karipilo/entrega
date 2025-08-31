@@ -99,3 +99,20 @@ body {
     text-align: justify;
     margin: 0;
 }
+
+/* ---------- Carrusel ---------- */
+#carouselExample .carousel-item img {
+    height: 440px;
+    /* ajusta al alto deseado */
+    object-fit: cover;
+    /* recorta manteniendo proporción */
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #5CC8A1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .35));
+}
