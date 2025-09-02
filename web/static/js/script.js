@@ -1,89 +1,196 @@
-let datoUsuarioAdmin = {
-    "nombreCompleto": "Karina Pimentel",
-    "usuario": "karina",
-    "email": "kari@gmail.com",
-    "password": "karina",
-    "estado": true
+// ====== DEMO DE AUTENTICACIÓN EN LOCALSTORAGE ======
+const STORAGE_KEY = "datoUsuario";
+
+function getUser() {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY));
+    } catch (e) {
+        return null;
+    }
 }
 
-// Al cargar la página, muestra el nombre en home.html si el usuario está logueado
-window.onload = function () {
+function saveUser(user) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+}
+
+function logout() {
+    const u = getUser();
+    if (u) {
+        u.estadoLogin = false;
+        saveUser(u);
+    }
+    // Reset nav si existe
+    const navLogin = document.getElementById("navLoginItem");
+    const navLogout = document.getElementById("navLogoutItem");
+    const cambio = document.getElementById("cambio");
+
+    if (cambio) {
+        cambio.textContent = "";
+        cambio.classList.add("d-none"); // siempre oculto si no hay sesión
+    }
+    if (navLogin) navLogin.classList.remove("d-none");
+    if (navLogout) navLogout.classList.add("d-none");
+
+    window.location.href = "home.html";
+}
+
+// Muestra saludo solo si hay sesión; si no, lo oculta
+function renderGreeting() {
+    const cambio = document.getElementById("cambio");
+    const navLogin = document.getElementById("navLoginItem");
+    const navLogout = document.getElementById("navLogoutItem");
+    const user = getUser();
+
+    if (user && user.estadoLogin) {
+        if (cambio) {
+            cambio.textContent = "Bienvenido " + (user.usuario || user.email);
+            cambio.classList.remove("d-none");   // mostrar saludo SOLO con sesión
+        }
+        if (navLogin) navLogin.classList.add("d-none");
+        if (navLogout) navLogout.classList.remove("d-none");
+    } else {
+        if (cambio) {
+            cambio.textContent = "";
+            cambio.classList.add("d-none");      // ocultar si NO hay sesión
+        }
+        if (navLogin) navLogin.classList.remove("d-none");
+        if (navLogout) navLogout.classList.add("d-none");
+    }
+}
+
+// Protege páginas que requieren sesión (ej.: dashboard)
+function protectPageForLoggedIn() {
     const path = window.location.pathname;
-    if (path.endsWith("registro.html") || path.endsWith("welcome.html")) {
-        let usuarioLogin = JSON.parse(localStorage.getItem("datoUsuario"))
-        if (usuarioLogin && usuarioLogin.estadoLogin) {
-            document.getElementById("cambio").textContent = "Bienvenido " + usuarioLogin.usuario
-        } else {
-            // Si no está logueado, redirige al login
-            window.location.href = "ini_sesion.html"
-        }
-    }
-}
+    const requiresAuth = path.endsWith("pantalla_prof.html");
+    if (!requiresAuth) return;
 
-// Función de validación y login
-function datoUsuario() {
-    let usuario = document.getElementById("UsuarioInput").value
-    let password = document.getElementById("inputPassword5").value
-    if (usuario == "" || password == "") {
-        alert("Usuario y contraseña no deben estar vacíos")
-        return
-    } else if (usuario.length < 3 || password.length < 3) {
-        alert("Debe tener más de 3 caracteres")
-        return
-    } else if (usuario == datoUsuarioAdmin.usuario && password == datoUsuarioAdmin.password) {
-        // Guardar datos en localStorage
-        let usuarioLogeado = {
-            "usuario": datoUsuarioAdmin.nombreCompleto,
-            "estadoLogin": datoUsuarioAdmin.estado
-        }
-        localStorage.setItem("datoUsuario", JSON.stringify(usuarioLogeado))
-        window.location.href = "registro.html"
-    } else {
-        // Verificar usuarios registrados
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        let usuarioEncontrado = usuarios.find(u => (u.nombre === usuario || u.email === usuario) && u.contrasena === password);
-        if (usuarioEncontrado) {
-            let usuarioLogeado = {
-                "usuario": usuarioEncontrado.nombre,
-                "estadoLogin": true
-            }
-            localStorage.setItem("datoUsuario", JSON.stringify(usuarioLogeado))
-            window.location.href = "registro.html"
-        } else {
-            alert("Usuario o contraseña incorrctos")
-            return
-        }
-    }
-}
-
-function registroUsuario() {
-    let nombre = document.getElementById("UsuarioInput").value
-    let email = document.getElementById("regEmail").value
-    let contrasena = document.getElementById("inputPassword5").value
-    let repetirContrasena = document.getElementById("inputPassword").value
-    //es una variable que me dice si el usuario ya existe
-    let existe = false;
-    //usuarios es un array que contiene los usuarios registrados en el localStorage
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    for (let i = 0; i < usuarios.length; i++) {
-        if (usuarios[i].email === email) {     // === valores y tipos de datos
-            existe = true;
-            break;
-        }
-    }
-    if (email == "" || nombre == "" || contrasena == "" || repetirContrasena == "") {
-        alert("Todos los campos son obligatorios");
-    } else if (contrasena !== repetirContrasena) {
-        alert("Las contraseñas no coinciden");
-    } else if (existe) {
-        alert("El email ya existe");
-    } else {
-        usuarios.push({ nombre, email, contrasena });
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        alert("Registro exitoso. Ahora puedes iniciar sesión.");
+    const user = getUser();
+    if (!(user && user.estadoLogin)) {
         window.location.href = "ini_sesion.html";
     }
-
-
 }
+
+// ----- Registro -----
+function setupRegistro() {
+    const selectTipo = document.getElementById("tipoUsuario");
+    const camposProfesional = document.getElementById("camposProfesional");
+    const camposTutor = document.getElementById("camposTutor");
+    const btnRegistro = document.getElementById("btnRegistro");
+
+    if (selectTipo) {
+        selectTipo.addEventListener("change", () => {
+            const val = selectTipo.value;
+            if (val === "PROFESIONAL") {
+                camposProfesional?.classList.remove("d-none");
+                camposTutor?.classList.add("d-none");
+            } else if (val === "TUTOR") {
+                camposTutor?.classList.remove("d-none");
+                camposProfesional?.classList.add("d-none");
+            } else {
+                camposTutor?.classList.add("d-none");
+                camposProfesional?.classList.add("d-none");
+            }
+        });
+    }
+
+    if (btnRegistro) {
+        btnRegistro.addEventListener("click", () => {
+            const usuario = document.getElementById("UsuarioInput")?.value?.trim();
+            const email = document.getElementById("regEmail")?.value?.trim();
+            const pass1 = document.getElementById("inputPassword5")?.value;
+            const pass2 = document.getElementById("inputPassword")?.value;
+            const tipo = document.getElementById("tipoUsuario")?.value;
+
+            if (!usuario || !email || !pass1 || !pass2 || !tipo) {
+                alert("Completa todos los campos obligatorios.");
+                return;
+            }
+            if (pass1 !== pass2) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+
+            const nuevoUsuario = {
+                usuario,
+                email,
+                password: pass1,
+                tipo,
+                estadoLogin: false,
+                // Opcionales por rol
+                profesion: document.getElementById("profesion")?.value?.trim() || null,
+                numRegistro: document.getElementById("numRegistro")?.value?.trim() || null,
+                parentesco: document.getElementById("parentesco")?.value?.trim() || null,
+            };
+
+            saveUser(nuevoUsuario);
+            alert("Cuenta creada. Ahora inicia sesión.");
+            window.location.href = "ini_sesion.html";
+        });
+    }
+}
+
+// ----- Login -----
+function setupLogin() {
+    const btnLogin = document.getElementById("btnLogin");
+    if (!btnLogin) return;
+
+    btnLogin.addEventListener("click", () => {
+        const email = document.getElementById("loginEmail")?.value?.trim();
+        const password = document.getElementById("loginPassword")?.value;
+
+        if (!email || !password) {
+            alert("Ingresa email y contraseña.");
+            return;
+        }
+
+        const u = getUser();
+        if (!u) {
+            alert("No hay una cuenta registrada. Por favor, regístrate primero.");
+            window.location.href = "registro.html";
+            return;
+        }
+
+        if (u.email === email && u.password === password) {
+            u.estadoLogin = true;
+            saveUser(u);
+            // Redirección simple según rol
+            if (u.tipo === "PROFESIONAL") {
+                window.location.href = "pantalla_prof.html";
+            } else {
+                window.location.href = "home.html";
+            }
+        } else {
+            alert("Credenciales inválidas.");
+        }
+    });
+}
+
+// Botones de logout en distintas pantallas
+function setupLogoutButtons() {
+    const btnLogout = document.getElementById("btnLogout");
+    const btnLogoutDash = document.getElementById("btnLogoutDashboard");
+    if (btnLogout) btnLogout.addEventListener("click", logout);
+    if (btnLogoutDash) btnLogoutDash.addEventListener("click", logout);
+}
+
+// Mensaje en dashboard
+function setupDashboardGreeting() {
+    const saludo = document.getElementById("saludoProfesional");
+    const mensaje = document.getElementById("mensajeBienvenida");
+    if (!saludo && !mensaje) return;
+    const u = getUser();
+    if (u && u.estadoLogin) {
+        if (saludo) saludo.textContent = `Conectado como: ${u.usuario || u.email} (${u.tipo})`;
+        if (mensaje) mensaje.textContent = `Bienvenido ${u.usuario || u.email}. Aquí verás tu agenda, pacientes y notificaciones.`;
+    }
+}
+
+// INIT
+document.addEventListener("DOMContentLoaded", () => {
+    renderGreeting();
+    protectPageForLoggedIn();
+    setupRegistro();
+    setupLogin();
+    setupLogoutButtons();
+    setupDashboardGreeting();
+});

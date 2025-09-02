@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Registro</title>
     <link rel="stylesheet" href="style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <header>
+    <script src="js/script.js" defer></script>
+</head>
 
+<body>
+    <header>
         <nav class="navbar navbar-expand-lg custom-navbar navbar-dark">
             <div class="container-fluid">
                 <img src="images/ChatGPT Image 26 ago 2025, 23_42_14.png" alt="bootstrap" width="40" height="34">
                 <a class="navbar-brand" href="home.html">Home</a>
-
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,83 +23,67 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="registro.html">Registro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Procedimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Inicio</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="registro.html">Registro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Procedimientos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="ini_sesion.html">Inicio de Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    </header>
-    <script src="js/script.js"></script>
-</head>
-<main>
-    <div class="LoginUsuario">
 
-        <h2 class="card-title"> Registro</h2>
-        <p class="text-center">¡Bienvenido! Ingresa tus datos para continuar.</p>
-        <label for="UsuarioInput" class="form-label">Nombre</label>
-        <input type="text" id="UsuarioInput" class="form-control input-gris-claro" aria-describedby="passwordHelpBlock"
-            placeholder="Ingresa tu usuario">
+    <main class="container py-4">
+        <div class="LoginUsuario">
+            <h2 class="card-title">Registro</h2>
+            <p class="text-center">¡Bienvenido! Ingresa tus datos para continuar.</p>
 
-        <label for="regEmail" class="form-label">Correo electrónico</label>
-        <input type="email" id="regEmail" class="form-control" aria-describedby="passwordHelpBlock"
-            placeholder="Ingresa tu correo electrónico">
+            <label for="UsuarioInput" class="form-label">Nombre</label>
+            <input type="text" id="UsuarioInput" class="form-control input-gris-claro" placeholder="Ingresa tu usuario">
 
-        <label for="inputPassword5" class="form-label">Contraseña</label>
-        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock"
-            placeholder="Ingresa tu contraseña">
+            <label for="regEmail" class="form-label mt-2">Correo electrónico</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="Ingresa tu correo electrónico">
 
-        <label for="inputPassword" class="form-label">Repite Contraseña</label>
-        <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock"
-            placeholder="Repite contraseña">
-        <div class="mb-3">
-            <label for="tipoUsuario" class="form-label">Tipo de usuario</label>
-            <select id="tipoUsuario" class="form-select" required>
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="PROFESIONAL">Profesional de Salud</option>
-                <option value="TUTOR">Tutor / Familiar</option>
-                <!-- No ofrecer ADMIN en el formulario -->
-            </select>
+            <label for="inputPassword5" class="form-label mt-2">Contraseña</label>
+            <input type="password" id="inputPassword5" class="form-control" placeholder="Ingresa tu contraseña">
+
+            <label for="inputPassword" class="form-label mt-2">Repite Contraseña</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Repite contraseña">
+
+            <div class="mb-3 mt-3">
+                <label for="tipoUsuario" class="form-label">Tipo de usuario</label>
+                <select id="tipoUsuario" class="form-select" required>
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="PROFESIONAL">Profesional de Salud</option>
+                    <option value="TUTOR">Tutor / Familiar</option>
+                    <!-- No ofrecer ADMIN en el formulario -->
+                </select>
+            </div>
+
+            <!-- Campos opcionales por rol -->
+            <div id="camposProfesional" class="mb-3 d-none">
+                <label for="profesion" class="form-label">Profesión</label>
+                <input type="text" id="profesion" class="form-control" placeholder="Médico, Enfermera, TENS, etc.">
+                <label for="numRegistro" class="form-label mt-2">N° registro profesional (opcional)</label>
+                <input type="text" id="numRegistro" class="form-control">
+            </div>
+
+            <div id="camposTutor" class="mb-3 d-none">
+                <label for="parentesco" class="form-label">Parentesco</label>
+                <input type="text" id="parentesco" class="form-control" placeholder="Madre, Padre, Tutor legal, etc.">
+            </div>
+
+            <button id="btnRegistro" class="button-56" type="button">Crear cuenta</button>
+            <div class="text-center mt-2">
+                <a href="ini_sesion.html" class="small d-block text-decoration-none">Ya tengo una cuenta</a>
+            </div>
         </div>
+    </main>
 
-        <!-- Campos opcionales por rol -->
-        <div id="camposProfesional" class="mb-3 d-none">
-            <label for="profesion" class="form-label">Profesión</label>
-            <input type="text" id="profesion" class="form-control" placeholder="Médico, Enfermera, TENS, etc.">
-            <label for="numRegistro" class="form-label mt-2">N° registro profesional (opcional)</label>
-            <input type="text" id="numRegistro" class="form-control">
-        </div>
-
-        <div id="camposTutor" class="mb-3 d-none">
-            <label for="parentesco" class="form-label">Parentesco</label>
-            <input type="text" id="parentesco" class="form-control" placeholder="Madre, Padre, Tutor legal, etc.">
-        </div>
-
-        <button class="button-56" role="button">Crear cuenta</button>
-        <div class="text-center">
-            <a href="ini_sesion.html" class="small d-block text-decoration-none">Ya tengo una cuenta</a>
-        </div>
-
-
-    </div>
-
-
-</main>
-
-<body>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
