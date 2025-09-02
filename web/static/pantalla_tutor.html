@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuidado Seguro — Panel Tutor</title>
+
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="style/style.css"/>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- (Opcional) Bootstrap Icons para iconitos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+          <img src="images/ChatGPT Image 26 ago 2025, 23_42_14.png" alt="logo" width="40" height="34">
+          Cuidado Seguro
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="home.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Procedimientos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="pantalla_tutor.html">Panel Tutor</a></li>
+          </ul>
+
+          <!-- Saludo dinámico -->
+          <span id="cambio" class="navbar-text me-3 d-none"></span>
+
+          <!-- Acciones según sesión -->
+          <ul class="navbar-nav">
+            <li id="navLoginItem" class="nav-item">
+              <a class="btn btn-sm btn-outline-light" href="ini_sesion.html">Iniciar sesión</a>
+            </li>
+            <li id="navLogoutItem" class="nav-item d-none">
+              <button id="btnLogoutDashboard" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main class="py-4">
+    <div class="container">
+      <!-- Encabezado -->
+      <div class="row align-items-center mb-3">
+        <div class="col">
+          <h1 class="h3 mb-0">Panel del Tutor/Familiar</h1>
+          <p id="mensajeBienvenida" class="text-muted mb-0">Bienvenido. Aquí verás tus pacientes, citas y mensajes.</p>
+        </div>
+        <div class="col-auto">
+          <span id="saludoProfesional" class="badge text-bg-secondary">Conectado</span>
+        </div>
+      </div>
+
+      <!-- KPIs rápidos -->
+      <div class="row g-3 mb-3">
+        <div class="col-6 col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Pacientes</span>
+                <i class="bi bi-people"></i>
+              </div>
+              <div class="fs-4 fw-semibold mt-1">2</div>
+              <small class="text-muted">bajo tu tutela</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Próximas citas</span>
+                <i class="bi bi-calendar-event"></i>
+              </div>
+              <div class="fs-4 fw-semibold mt-1">3</div>
+              <small class="text-muted">próximos 7 días</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Documentos</span>
+                <i class="bi bi-file-earmark-text"></i>
+              </div>
+              <div class="fs-4 fw-semibold mt-1">1</div>
+              <small class="text-muted">pendiente de firma</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted">Mensajes</span>
+                <i class="bi bi-chat-dots"></i>
+              </div>
+              <div class="fs-4 fw-semibold mt-1">4</div>
+              <small class="text-muted">sin leer</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dos columnas -->
+      <div class="row g-3">
+        <!-- Columna izquierda -->
+        <div class="col-lg-8">
+          <!-- Mis Pacientes -->
+          <div class="card shadow-sm mb-3">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <strong>Mis Pacientes</strong>
+              <div class="input-group input-group-sm" style="max-width: 260px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input id="buscarPaciente" type="text" class="form-control" placeholder="Buscar por nombre…">
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush" id="listaPacientes">
+                <!-- Ejemplos -->
+                <a href="ficha_paciente.html?id=1" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Juan Pérez</h6>
+                    <small class="text-muted">ELEAM Las Palmas</small>
+                  </div>
+                  <p class="mb-1 text-muted">DM2, HTA — Contacto: +56 9 1234 5678</p>
+                  <small class="text-muted"><i class="bi bi-geo-alt"></i> Viña del Mar</small>
+                </a>
+                <a href="ficha_paciente.html?id=2" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">María López</h6>
+                    <small class="text-muted">Hogar San José</small>
+                  </div>
+                  <p class="mb-1 text-muted">Alzheimer leve — Contacto: +56 9 8765 4321</p>
+                  <small class="text-muted"><i class="bi bi-geo-alt"></i> Quilpué</small>
+                </a>
+              </div>
+            </div>
+            <div class="card-footer text-end">
+              <a href="#" class="btn btn-sm btn-outline-primary">Ver todos</a>
+            </div>
+          </div>
+
+          <!-- Solicitudes al Profesional -->
+          <div class="card shadow-sm mb-3">
+            <div class="card-header"><strong>Solicitudes al Profesional</strong></div>
+            <div class="card-body">
+              <form id="formSolicitud" class="row g-3">
+                <div class="col-md-6">
+                  <label for="pacienteSelect" class="form-label">Paciente</label>
+                  <select id="pacienteSelect" class="form-select" required>
+                    <option value="" selected disabled>Selecciona…</option>
+                    <option>Juan Pérez</option>
+                    <option>María López</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="tipoSolicitud" class="form-label">Tipo</label>
+                  <select id="tipoSolicitud" class="form-select" required>
+                    <option value="" selected disabled>Selecciona…</option>
+                    <option>Agendar control</option>
+                    <option>Actualizar antecedentes</option>
+                    <option>Solicitud de llamada</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="detalleSolicitud" class="form-label">Detalle</label>
+                  <textarea id="detalleSolicitud" class="form-control" rows="3" placeholder="Describe tu solicitud…" required></textarea>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="col-lg-4">
+          <!-- Próximas Citas -->
+          <div class="card shadow-sm mb-3">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <strong>Próximas Citas</strong>
+              <a href="#" class="small text-decoration-none">Ver calendario</a>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                  <span>Juan Pérez — Control médico</span>
+                  <span class="badge text-bg-info">03 Sep 10:30</span>
+                </div>
+                <small class="text-muted">Clínica Los Alerces</small>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                  <span>María López — Kinesiología</span>
+                  <span class="badge text-bg-info">05 Sep 09:00</span>
+                </div>
+                <small class="text-muted">ELEAM Las Palmas</small>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                  <span>Juan Pérez — Exámenes</span>
+                  <span class="badge text-bg-info">07 Sep 08:15</span>
+                </div>
+                <small class="text-muted">Laboratorio Centro</small>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Documentos y Consentimientos -->
+          <div class="card shadow-sm mb-3">
+            <div class="card-header"><strong>Documentos y Consentimientos</strong></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Consentimiento de Procedimiento
+                <span class="badge text-bg-warning">Pendiente</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Autorización de Datos
+                <span class="badge text-bg-success">Firmado</span>
+              </li>
+            </ul>
+            <div class="card-footer text-end">
+              <a href="#" class="btn btn-sm btn-outline-primary">Revisar / Firmar</a>
+            </div>
+          </div>
+
+          <!-- Mensajes -->
+          <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <strong>Mensajes</strong>
+              <span class="badge text-bg-danger">4 sin leer</span>
+            </div>
+            <div class="list-group list-group-flush">
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">Enfermera Camila</h6>
+                  <small>hace 2 h</small>
+                </div>
+                <p class="mb-1 text-muted">Se reprogramó la curación de mañana…</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">Dr. Soto</h6>
+                  <small>ayer</small>
+                </div>
+                <p class="mb-1 text-muted">Resultados de laboratorio disponibles…</p>
+              </a>
+            </div>
+            <div class="card-footer text-end">
+              <a href="#" class="btn btn-sm btn-outline-primary">Ver bandeja</a>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </main>
+
+  <!-- JS propio (tu lógica global) -->
+  <script src="js/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script de la página (ligero, usa tu API localStorage existente) -->
+  <script>
+    (function() {
+      // Requiere sesión y rol TUTOR
+      try {
+        const u = (function(){ try { return JSON.parse(localStorage.getItem("datoUsuario")); } catch(e){ return null; } })();
+        if (!(u && u.estadoLogin)) {
+          window.location.href = "ini_sesion.html";
+          return;
+        }
+        if (u.tipo !== "TUTOR") {
+          // Si no es Tutor, puedes enviarlo a su panel respectivo
+          if (u.tipo === "PROFESIONAL") {
+            window.location.href = "pantalla_prof.html";
+          } else {
+            window.location.href = "home.html";
+          }
+          return;
+        }
+      } catch(e) {}
+
+      // Búsqueda básica en lista de pacientes (filtro en cliente)
+      const search = document.getElementById("buscarPaciente");
+      const lista = document.getElementById("listaPacientes");
+      search?.addEventListener("input", () => {
+        const term = search.value.trim().toLowerCase();
+        lista.querySelectorAll(".list-group-item").forEach(item => {
+          const txt = item.textContent.toLowerCase();
+          item.classList.toggle("d-none", !txt.includes(term));
+        });
+      });
+
+      // Guardar solicitud de ejemplo en localStorage
+      const form = document.getElementById("formSolicitud");
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const paciente = document.getElementById("pacienteSelect")?.value;
+        const tipo = document.getElementById("tipoSolicitud")?.value;
+        const detalle = document.getElementById("detalleSolicitud")?.value?.trim();
+
+        if (!paciente || !tipo || !detalle) return;
+
+        try {
+          const prev = JSON.parse(localStorage.getItem("solicitudesTutor") || "[]");
+          prev.push({ paciente, tipo, detalle, ts: Date.now() });
+          localStorage.setItem("solicitudesTutor", JSON.stringify(prev));
+          // Feedback rápido
+          const btn = form.querySelector('button[type="submit"]');
+          const old = btn.textContent;
+          btn.textContent = "Enviado ✓";
+          btn.disabled = true;
+          setTimeout(() => { btn.textContent = old; btn.disabled = false; form.reset(); }, 900);
+        } catch(_e) {}
+      });
+    })();
+  </script>
+</body>
+</html>
