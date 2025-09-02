@@ -180,7 +180,7 @@ function setupLogin() {
             if (u.tipo === "PROFESIONAL") {
                 window.location.href = "pantalla_prof.html";
             } else {
-                window.location.href = "home.html";
+                window.location.href = "pantalla_tutor.html";
             }
         } else {
             alert("Credenciales inválidas.");
@@ -217,3 +217,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setupLogoutButtons();
     setupDashboardGreeting();
 });
+
+
