@@ -1,6 +1,14 @@
 // ====== DEMO DE AUTENTICACIÓN EN LOCALSTORAGE ======
 const STORAGE_KEY = "datoUsuario";
 
+function isValidEmail(raw) {
+  const email = (raw || "").trim().toLowerCase();
+  // Reglas: algo@algo.algo  (sin espacios)
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  return re.test(email);
+}
+
+
 function getUser() {
     try {
         return JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -105,6 +113,14 @@ function setupRegistro() {
                 alert("Completa todos los campos obligatorios.");
                 return;
             }
+            if (!isValidEmail(email)){
+                alert("Ingresa un correo válido (ej: usuario@dominio.com).");
+                return;
+            }
+            if (pass1.length < 6){
+                alert("La contraseña debe tener al menos 6 caracteres.");
+                return;
+            }
             if (pass1 !== pass2) {
                 alert("Las contraseñas no coinciden.");
                 return;
@@ -112,7 +128,7 @@ function setupRegistro() {
 
             const nuevoUsuario = {
                 usuario,
-                email,
+                email: email.toLowerCase(),
                 password: pass1,
                 tipo,
                 estadoLogin: false,
@@ -135,13 +151,20 @@ function setupLogin() {
     if (!btnLogin) return;
 
     btnLogin.addEventListener("click", () => {
-        const email = document.getElementById("loginEmail")?.value?.trim();
+        const rawEmail = document.getElementById("loginEmail")?.value?.trim();
         const password = document.getElementById("loginPassword")?.value;
 
-        if (!email || !password) {
+        if (!rawEmail || !password) {
             alert("Ingresa email y contraseña.");
             return;
         }
+
+        if (!isValidEmail(rawEmail)){
+            alert("Ingresa un correo válido (ej: usuario@dominio.com).");
+            return;
+        }
+
+        const email = rawEmail.toLowerCase();
 
         const u = getUser();
         if (!u) {
