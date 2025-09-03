@@ -12,6 +12,43 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="pantalla_tutor.html">
+                <img src="images/logo.png" alt="logo" width="40" height="34">
+                Cuidado Seguro
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Procedimientos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="pantalla_tutor.html">Panel
+                            Tutor</a></li>
+                </ul>
+
+                <!-- Saludo dinámico -->
+                <span id="cambio" class="navbar-text me-3 d-none"></span>
+
+                <!-- Acciones según sesión -->
+                <ul class="navbar-nav">
+                    <li id="navLoginItem" class="nav-item">
+                        <a class="btn btn-sm btn-outline-light" href="ini_sesion.html">Iniciar sesión</a>
+                    </li>
+                    <li id="navLogoutItem" class="nav-item d-none">
+                        <button id="btnLogoutDashboard" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->

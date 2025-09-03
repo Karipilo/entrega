@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuidado Seguro — Panel Tutor</title>
 
   <!-- CSS propio -->
-  <link rel="stylesheet" href="style/style.css"/>
+  <link rel="stylesheet" href="style/style.css" />
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- (Opcional) Bootstrap Icons para iconitos -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
+
 <body>
   <!-- Header / Navbar -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center gap-2" href="pantalla_tutor.html">
-          <img src="images/ChatGPT Image 26 ago 2025, 23_42_14.png" alt="logo" width="40" height="34">
+          <img src="images/logo.png" alt="logo" width="40" height="34">
           Cuidado Seguro
         </a>
 
@@ -35,7 +37,8 @@
             <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Procedimientos</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="pantalla_tutor.html">Panel Tutor</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="pantalla_tutor.html">Panel
+                Tutor</a></li>
           </ul>
 
           <!-- Saludo dinámico -->
@@ -184,7 +187,8 @@
                 </div>
                 <div class="col-12">
                   <label for="detalleSolicitud" class="form-label">Detalle</label>
-                  <textarea id="detalleSolicitud" class="form-control" rows="3" placeholder="Describe tu solicitud…" required></textarea>
+                  <textarea id="detalleSolicitud" class="form-control" rows="3" placeholder="Describe tu solicitud…"
+                    required></textarea>
                 </div>
                 <div class="col-12 d-flex justify-content-end">
                   <button type="submit" class="btn btn-primary">Enviar solicitud</button>
@@ -283,10 +287,10 @@
 
   <!-- Script de la página (ligero, usa tu API localStorage existente) -->
   <script>
-    (function() {
+    (function () {
       // Requiere sesión y rol TUTOR
       try {
-        const u = (function(){ try { return JSON.parse(localStorage.getItem("datoUsuario")); } catch(e){ return null; } })();
+        const u = (function () { try { return JSON.parse(localStorage.getItem("datoUsuario")); } catch (e) { return null; } })();
         if (!(u && u.estadoLogin)) {
           window.location.href = "ini_sesion.html";
           return;
@@ -300,7 +304,7 @@
           }
           return;
         }
-      } catch(e) {}
+      } catch (e) { }
 
       // Búsqueda básica en lista de pacientes (filtro en cliente)
       const search = document.getElementById("buscarPaciente");
@@ -333,9 +337,10 @@
           btn.textContent = "Enviado ✓";
           btn.disabled = true;
           setTimeout(() => { btn.textContent = old; btn.disabled = false; form.reset(); }, 900);
-        } catch(_e) {}
+        } catch (_e) { }
       });
     })();
   </script>
 </body>
+
 </html>

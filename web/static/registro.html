@@ -66,15 +66,23 @@
             <!-- Campos opcionales por rol -->
             <div id="camposProfesional" class="mb-3 d-none">
                 <label for="profesion" class="form-label">Profesión</label>
-                <input type="text" id="profesion" class="form-control" placeholder="Médico, Enfermera, TENS, etc.">
-                <label for="numRegistro" class="form-label mt-2">N° registro profesional (opcional)</label>
+                <input type="text" id="profesion" class="form-control">
+                <label for="numRegistro" class="form-label mt-2">N° Registro (RNPI)</label>
                 <input type="text" id="numRegistro" class="form-control">
+                <label for="institucion" class="form-label">Institución</label>
+                <input type="text" id="institucion" class="form-control input-gris-claro"
+                    placeholder="Ingresa el nombre de la institución">
             </div>
 
             <div id="camposTutor" class="mb-3 d-none">
                 <label for="parentesco" class="form-label">Parentesco</label>
                 <input type="text" id="parentesco" class="form-control" placeholder="Madre, Padre, Tutor legal, etc.">
+                <label for="RutPaciente" class="form-label">Rut Paciente</label>
+                <input type="text" id="RutPaciente" class="form-control input-gris-claro">
             </div>
+
+
+
 
             <button id="btnRegistro" class="button-56" type="button">Crear cuenta</button>
             <div class="text-center mt-2">
