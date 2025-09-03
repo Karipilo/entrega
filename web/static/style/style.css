@@ -247,3 +247,7 @@ body {
 .link-footer:hover {
     text-decoration: underline;
 }
+
+/*Imagenes centros y hogares*/
+.card-img-top.thumb{ width:100%; height:180px; object-fit:cover; object-position:center; }
+@media (min-width:992px){ .card-img-top.thumb{ height:200px; } }
