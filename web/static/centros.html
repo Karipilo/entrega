@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuidado Seguro — Centros y Hogares</title>
+
+  <!-- Tu CSS -->
+  <link rel="stylesheet" href="style/style.css"/>
+
+  <!-- Bootstrap CSS (solo para estilos) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Navbar simple -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+          <img src="images/ChatGPT Image 26 ago 2025, 23_42_14.png" alt="logo" width="40" height="34">
+          Cuidado Seguro
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarNav" class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="home.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="centros.html">Centros y Hogares</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main class="py-4">
+    <div class="container">
+
+      <!-- Anclas -->
+      <div class="d-flex gap-3 mb-3">
+        <a href="#centros" class="btn btn-outline-primary btn-sm">Ver Centros Médicos</a>
+        <a href="#hogares" class="btn btn-outline-success btn-sm">Ver ELEAM / Hogares</a>
+      </div>
+
+      <!-- Centros Médicos -->
+      <section id="centros" class="mb-4">
+        <h2 class="h4 mb-3">Centros Médicos</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+
+          <!-- Clínica Los Alerces -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">Clínica Los Alerces</h5>
+                    <small class="text-muted">Viña del Mar, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-primary">CENTRO</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Av. Libertad 1234</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 32 123 4567</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Medicina General</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Kinesiología</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Laboratorio</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> Lun–Vie 08:00–19:00</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centro Médico Quilpué -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">Centro Médico Quilpué</h5>
+                    <small class="text-muted">Quilpué, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-primary">CENTRO</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Av. Los Carrera 800</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 32 765 4321</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Pediatría</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Medicina General</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> Lun–Sáb 09:00–18:00</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consultorio Miraflores -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">Consultorio Miraflores</h5>
+                    <small class="text-muted">Viña del Mar, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-primary">CENTRO</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Miraflores Alto 200</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 32 111 2222</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Medicina Familiar</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Vacunatorio</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> Lun–Vie 08:30–17:00</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ELEAM / Hogares -->
+      <section id="hogares" class="mb-4">
+        <h2 class="h4 mb-3">ELEAM / Hogares</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+
+          <!-- ELEAM Las Palmas -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">ELEAM Las Palmas</h5>
+                    <small class="text-muted">Viña del Mar, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-success">HOGAR</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Calle Las Palmas 55</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 9 2222 3344</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Geriatría</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Enfermería 24/7</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Cuidados Paliativos</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> 24/7</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hogar San José -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">Hogar San José</h5>
+                    <small class="text-muted">Quilpué, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-success">HOGAR</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Pasaje San José 100</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 9 9988 7766</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Enfermería</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Rehabilitación</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> 24/7</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hogar Santa María -->
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="card-title mb-0">Hogar Santa María</h5>
+                    <small class="text-muted">Villa Alemana, Valparaíso</small>
+                  </div>
+                  <span class="badge text-bg-success">HOGAR</span>
+                </div>
+                <p class="mt-2 mb-1 small-muted"><strong>Dirección:</strong> Av. Valparaíso 300</p>
+                <p class="mb-1 small-muted"><strong>Teléfono:</strong> +56 9 3344 5566</p>
+                <div class="mb-2">
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Geriatría</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark">Terapia Ocupacional</span>
+                </div>
+                <small class="text-muted"><strong>Horario:</strong> 24/7</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- (Opcional) Bootstrap JS solo si quieres que el menú colapse en móvil -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -174,3 +174,16 @@ body {
 .agenda-row span {
     font-size: 0.9rem;
 }
+
+/* centros médicos */
+
+.custom-navbar { background-color: #34495E; } /* Azul petróleo */
+
+.small-muted { color: #6c757d; font-size: .95rem; }
+
+.btn-outline-primary { border-color: #5CC8A1; color: #5CC8A1; }
+.btn-outline-primary:hover { background: #5CC8A1; color: #fff; }
+
+.btn-outline-success { border-color: #F8BBD0; color: #F8BBD0; }
+.btn-outline-success:hover { background: #F8BBD0; color: #34495E; }
+

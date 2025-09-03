@@ -183,7 +183,7 @@ function setupLogin() {
                 window.location.href = "pantalla_tutor.html";
             }
         } else {
-            alert("Credenciales inválidas.");
+            alert("Datos inválidos.");
         }
     });
 }
