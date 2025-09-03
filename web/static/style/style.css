@@ -177,13 +177,73 @@ body {
 
 /* centros médicos */
 
-.custom-navbar { background-color: #34495E; } /* Azul petróleo */
+.custom-navbar {
+    background-color: #34495E;
+}
 
-.small-muted { color: #6c757d; font-size: .95rem; }
+/* Azul petróleo */
 
-.btn-outline-primary { border-color: #5CC8A1; color: #5CC8A1; }
-.btn-outline-primary:hover { background: #5CC8A1; color: #fff; }
+.small-muted {
+    color: #6c757d;
+    font-size: .95rem;
+}
 
-.btn-outline-success { border-color: #F8BBD0; color: #F8BBD0; }
-.btn-outline-success:hover { background: #F8BBD0; color: #34495E; }
+.btn-outline-primary {
+    border-color: #5CC8A1;
+    color: #5CC8A1;
+}
 
+.btn-outline-primary:hover {
+    background: #5CC8A1;
+    color: #fff;
+}
+
+.btn-outline-success {
+    border-color: #F8BBD0;
+    color: #F8BBD0;
+}
+
+.btn-outline-success:hover {
+    background: #F8BBD0;
+    color: #34495E;
+}
+
+
+.footer-rect {
+    background-color: #000;
+    /* Fondo negro */
+    color: #fff;
+    /* Texto blanco */
+    margin-top: 40px;
+    border-radius: 8px 8px 0 0;
+    /* Opcional: bordes redondeados arriba */
+}
+
+.footer-rect h5 {
+    color: #F8BBD0;
+    /* Rosa suave para títulos */
+    margin-bottom: 10px;
+}
+
+.footer-rect p {
+    margin: 0;
+}
+
+.footer-logo {
+    max-width: 90px;
+    border-radius: 50%;
+    /* Logo redondo */
+    background-color: #fff;
+    padding: 8px;
+}
+
+.link-footer {
+    color: #5CC8A1;
+    /* Verde agua */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+}
