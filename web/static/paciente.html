@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pacientes — Cuidado Seguro</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+                <img src="images/logo.png" alt="logo" width="40" height="34" />
+                Cuidado Seguro
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navTop"
+                aria-controls="navTop" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navTop" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard_profesional.html">Resumen</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="pacientes.html">Pacientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="datos_importantes.html">Datos importantes</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="btn btn-sm btn-outline-light" href="ini_sesion.html">Iniciar
+                            sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="container py-4">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div>
+                <h1 class="h3 mb-0">Pacientes</h1>
+                <small class="text-secondary">Gestiona el registro de pacientes institucionalizados</small>
+            </div>
+            <div class="d-flex gap-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text">Buscar</span>
+                    <input id="inpBuscarPaciente" type="search" class="form-control" placeholder="Nombre, RUT o hogar">
+                </div>
+                <button id="btnNuevoPaciente" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#modalPaciente">
+                    + Nuevo paciente
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>RUT</th>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Hogar</th>
+                            <th style="width: 160px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyPacientes">
+                        <!-- filas dinámicas -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer d-flex flex-wrap gap-2 align-items-center">
+                <div class="ms-auto d-flex gap-2">
+                    <button id="btnExportarCSV" class="btn btn-outline-secondary btn-sm">Exportar CSV</button>
+                    <button id="btnBorrarTodo" class="btn btn-outline-danger btn-sm">Borrar todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Crear/Editar Paciente -->
+    <div class="modal fade" id="modalPaciente" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formPaciente" class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalPacienteTitulo" class="modal-title">Nuevo paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="inpId" />
+                    <div class="mb-3">
+                        <label class="form-label">RUT</label>
+                        <input id="inpRut" class="form-control" placeholder="11.111.111-1" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input id="inpNombre" class="form-control" placeholder="Juan Pérez" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Edad</label>
+                        <input id="inpEdad" type="number" min="0" class="form-control" placeholder="74" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Hogar</label>
+                        <input id="inpHogar" class="form-control" placeholder="ELEAM Alerces" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnEliminarPaciente" type="button"
+                        class="btn btn-outline-danger d-none">Eliminar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Conecta la lógica específica del CRUD
+       - Si ya tienes `js/pantalla_prof.js`, puedes reutilizarlo aquí.
+       - O crea uno dedicado `js/pacientes.js` que use los mismos IDs: tbodyPacientes, formPaciente, etc.
+  -->
+    <script src="js/pantalla_prof.js"></script>
+</body>
+
+</html>

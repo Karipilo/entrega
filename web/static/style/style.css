@@ -247,3 +247,48 @@ body {
 .link-footer:hover {
     text-decoration: underline;
 }
+
+/* Sidebar y tarjetas */
+.sidebar {
+    background: #34495E;
+    /* puedes ajustar a tu paleta */
+    color: #fff;
+    min-height: calc(100vh - 56px);
+}
+
+.sidebar .nav-link {
+    color: #dfe6e9;
+    padding: .35rem 0;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.card-kpi {
+    padding: 14px 10px;
+    border: 0;
+}
+
+.card-kpi p {
+    margin: 0;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.card-kpi h2 {
+    font-weight: 700;
+}
+
+
+/* Utilidad para ocultar/mostrar vistas */
+.view-section.d-none {
+    display: none !important;
+}
+
+/* Botones pequeños armonizados */
+.btn-group .btn {
+    min-width: 74px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datos importantes — Cuidado Seguro</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+                <img src="images/logo.png" alt="logo" width="40" height="34" />
+                Cuidado Seguro
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navTop"
+                aria-controls="navTop" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navTop" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard_profesional.html">Resumen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pacientes.html">Pacientes</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="datos_importantes.html">Datos importantes</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="btn btn-sm btn-outline-light" href="ini_sesion.html">Iniciar
+                            sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="container py-4">
+        <h1 class="h3 mb-3">Datos importantes del paciente</h1>
+        <p class="text-secondary">Selecciona un paciente y registra sus antecedentes médicos.</p>
+
+        <!-- Selección paciente -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Seleccionar paciente (RUT)</label>
+                        <select id="selectPacienteDatos" class="form-select"></select>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end">
+                        <button id="btnCargarDatosPaciente" class="btn btn-outline-primary">Cargar datos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario de antecedentes -->
+        <div id="datosFormWrap" class="card d-none">
+            <div class="card-header fw-semibold">Información médica</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Diagnósticos</label>
+                    <textarea id="inpDiagnosticos" class="form-control" rows="2" placeholder="Ej: DM2, HTA"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Alergias</label>
+                    <textarea id="inpAlergias" class="form-control" rows="2" placeholder="Ej: Penicilinas"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Medicamentos</label>
+                    <textarea id="inpMedicamentos" class="form-control" rows="2"
+                        placeholder="Ej: Metformina 500 mg, Losartán 50 mg"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Notas / Próximos controles</label>
+                    <textarea id="inpNotas" class="form-control" rows="3"
+                        placeholder="Ej: Control cardiología 20/10"></textarea>
+                </div>
+                <div class="d-flex gap-2">
+                    <button id="btnGuardarDatos" class="btn btn-primary">Guardar</button>
+                    <button id="btnCancelarDatos" class="btn btn-outline-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Reutiliza la misma lógica del CRUD -->
+    <script src="js/pantalla_prof.js"></script>
+</body>
+
+</html>

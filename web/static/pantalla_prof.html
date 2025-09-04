@@ -5,13 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Profesional - Cuidado Seguro</title>
+
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="style/style.css">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="js/script.js" defer></script>
+
+    <!-- Script propio -->
+    <script src="js/pantalla_prof.js" defer></script>
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center gap-2" href="pantalla_tutor.html">
@@ -20,7 +26,7 @@
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -29,136 +35,218 @@
                     <li class="nav-item"><a class="nav-link" href="home.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
-
                 </ul>
 
-                <!-- Saludo dinámico -->
                 <span id="cambio" class="navbar-text me-3 d-none"></span>
 
-                <!-- Acciones según sesión -->
                 <ul class="navbar-nav">
                     <li id="navLoginItem" class="nav-item">
                         <a class="btn btn-sm btn-outline-light" href="ini_sesion.html">Iniciar sesión</a>
                     </li>
                     <li id="navLogoutItem" class="nav-item d-none">
-                        <button id="btnLogoutDashboard" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
+                        <button id="btnLogoutDashboardTop" class="btn btn-sm btn-outline-light">Cerrar sesión</button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- LAYOUT -->
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-2 sidebar">
-                <h3>Cuidado Seguro</h3>
-                <p id="saludoProfesional" class="small text-muted mb-0"></p>
-                <nav class="nav flex-column mt-4">
-                    <a class="nav-link active" href="#agenda">Agenda</a>
-                    <a class="nav-link" href="#pacientes">Pacientes</a>
-                    <a class="nav-link" href="#actividad">Actividad</a>
-                    <a class="nav-link" href="#notificaciones">Notificaciones</a>
+            <!-- SIDEBAR -->
+            <aside class="col-md-2 sidebar py-3">
+                <h5 class="mb-0">Cuidado Seguro</h5>
+                <p id="saludoProfesional" class="small text-muted mb-3"></p>
+                <nav class="nav flex-column">
+                    <a class="nav-link active" data-target="#vista-resumen" href="#">Resumen</a>
+                    <a class="nav-link" data-target="#vista-pacientes" href="paciente.html">Pacientes</a>
+                    <a class="nav-link" data-target="#vista-datos" href="dato_paciente.html">Datos importantes</a>
                 </nav>
                 <button id="btnLogoutDashboard" class="btn btn-outline-light btn-sm mt-3">Cerrar sesión</button>
-            </div>
+            </aside>
 
-            <!-- Main content -->
+            <!-- MAIN -->
             <main class="col-md-10 p-4">
                 <h1 class="mb-1">Panel del Profesional</h1>
                 <p id="mensajeBienvenida" class="text-secondary"></p>
 
-                <!-- Si quieres mostrar la institución en otro lugar específico, usa este span -->
-                <div class="alert alert-info mt-4" role="alert">
-                    <strong>Centro:</strong> <span id="institucionSpan">—</span>
+                <div class="alert alert-info mt-3" role="alert">
+                    <strong>Centro:</strong> <span id="institucion">—</span>
                 </div>
 
-                <!-- KPIs -->
-                <div class="row mb-4">
-                    <div class="col-md-3">
-                        <div class="card card-kpi shadow-sm">
-                            <p>Pacientes activos</p>
-                            <h2>42</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-kpi shadow-sm">
-                            <p>Controles hoy</p>
-                            <h2>8</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-kpi shadow-sm">
-                            <p>Tareas pendientes</p>
-                            <h2>5</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-kpi shadow-sm">
-                            <p>Alertas</p>
-                            <h2>2</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Agenda -->
-                <section id="agenda" class="mb-5">
-                    <h3>Agenda de Hoy</h3>
-                    <div class="card p-3">
-                        <div class="agenda-row"><span>09:00 - Juan Pérez</span><span>Control crónico</span></div>
-                        <div class="agenda-row"><span>09:45 - María López</span><span>Curación</span></div>
-                        <div class="agenda-row"><span>10:30 - Carlos Díaz</span><span>Vacunación</span></div>
-                        <div class="agenda-row"><span>11:15 - Ana Rivas</span><span>Evaluación</span></div>
-                        <div class="agenda-row"><span>12:00 - Rosa Gutiérrez</span><span>Control</span></div>
-                    </div>
-                </section>
-
-                <!-- Pacientes -->
-                <section id="pacientes" class="mb-5">
-                    <h3>Pacientes</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-3 shadow-sm">
-                                <h5>Juan Pérez</h5>
-                                <p>74 años • DM2, HTA</p>
-                                <span class="badge bg-warning text-dark">Riesgo Medio</span>
+                <!-- ========== VISTA: RESUMEN ========== -->
+                <section id="vista-resumen" class="view-section">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                            <div class="card card-kpi shadow-sm text-center">
+                                <p class="mb-1">Pacientes</p>
+                                <h2 id="kpiPacientes" class="mb-0">0</h2>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-3 shadow-sm">
-                                <h5>María López</h5>
-                                <p>81 años • ACV</p>
-                                <span class="badge bg-danger">Riesgo Alto</span>
+                        <div class="col-md-3">
+                            <div class="card card-kpi shadow-sm text-center">
+                                <p class="mb-1">Hogares</p>
+                                <h2 id="kpiHogares" class="mb-0">0</h2>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-3 shadow-sm">
-                                <h5>Carlos Díaz</h5>
-                                <p>69 años • EPOC</p>
-                                <span class="badge bg-success">Riesgo Bajo</span>
+                        <div class="col-md-3">
+                            <div class="card card-kpi shadow-sm text-center">
+                                <p class="mb-1">Alertas (alergias)</p>
+                                <h2 id="kpiAlertas" class="mb-0">0</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card card-kpi shadow-sm text-center">
+                                <p class="mb-1">Notificaciones</p>
+                                <h2 id="kpiNotificaciones" class="mb-0">0</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Listados rápidos -->
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-header fw-semibold">Alertas recientes</div>
+                                <ul id="listaAlertas" class="list-group list-group-flush small">
+                                    <!-- dinámico -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-header fw-semibold">Notificaciones</div>
+                                <ul id="listaNotificaciones" class="list-group list-group-flush small">
+                                    <!-- dinámico -->
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Actividad -->
-                <section id="actividad" class="mb-5">
-                    <h3>Actividad Reciente</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">08:15 • Evolución agregada para Juan Pérez</li>
-                        <li class="list-group-item">09:05 • Medicación validada para María López</li>
-                        <li class="list-group-item">10:22 • Curación registrada para Carlos Díaz</li>
-                    </ul>
+                <!-- ========== VISTA: PACIENTES (CRUD) ========== -->
+                <section id="vista-pacientes" class="view-section d-none">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="mb-0">Pacientes</h3>
+                        <button id="btnNuevoPaciente" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalPaciente">
+                            + Nuevo paciente
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>RUT</th>
+                                        <th>Nombre</th>
+                                        <th>Edad</th>
+                                        <th>Hogar</th>
+                                        <th style="width:160px;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyPacientes">
+                                    <!-- dinámico -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </section>
 
-                <!-- Notificaciones -->
-                <section id="notificaciones" class="mb-5">
-                    <h3>Notificaciones</h3>
-                    <div class="alert alert-danger">Alergia a penicilina: Paciente María López</div>
-                    <div class="alert alert-info">Recordatorio: Revisar signos de Ana R. a las 11:00</div>
+                <!-- ========== VISTA: DATOS IMPORTANTES ========== -->
+                <section id="vista-datos" class="view-section d-none">
+                    <h3>Datos importantes del paciente</h3>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label class="form-label">Seleccionar paciente (por RUT)</label>
+                                    <select id="selectPacienteDatos" class="form-select"></select>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-end">
+                                    <button id="btnCargarDatosPaciente" class="btn btn-outline-primary">Cargar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="datosFormWrap" class="card d-none">
+                        <div class="card-header fw-semibold">
+                            Información médica
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Diagnósticos</label>
+                                <textarea id="inpDiagnosticos" class="form-control" rows="2"
+                                    placeholder="Ej: DM2, HTA"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Alergias</label>
+                                <textarea id="inpAlergias" class="form-control" rows="2"
+                                    placeholder="Ej: Penicilinas"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Medicamentos</label>
+                                <textarea id="inpMedicamentos" class="form-control" rows="2"
+                                    placeholder="Ej: Metformina 500 mg, Losartán 50 mg"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Notas / Próximos controles</label>
+                                <textarea id="inpNotas" class="form-control" rows="3"
+                                    placeholder="Ej: Control cardiología 20/10"></textarea>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button id="btnGuardarDatos" class="btn btn-primary">Guardar</button>
+                                <button id="btnCancelarDatos" class="btn btn-outline-secondary">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+
+            </main>
         </div>
     </div>
+
+    <!-- MODAL PACIENTE (Crear/Editar) -->
+    <div class="modal fade" id="modalPaciente" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formPaciente" class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalPacienteTitulo" class="modal-title">Nuevo paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="inpId">
+                    <div class="mb-3">
+                        <label class="form-label">RUT</label>
+                        <input id="inpRut" class="form-control" placeholder="11.111.111-1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input id="inpNombre" class="form-control" placeholder="Juan Pérez" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Edad</label>
+                        <input id="inpEdad" type="number" min="0" class="form-control" placeholder="74" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Hogar</label>
+                        <input id="inpHogar" class="form-control" placeholder="ELEAM Alerces" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnEliminarPaciente" type="button"
+                        class="btn btn-outline-danger d-none">Eliminar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
